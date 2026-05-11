@@ -1,0 +1,71 @@
+/*
+ * Marquee strip — faithful port of the Claude static "TRUST STRIP" section
+ * (Maschinenbauer 3.0 BY CLAUDE/index.html lines 1175–1192 and CSS lines
+ * 277–299). Infinite horizontal scroll built with a pure CSS animation;
+ * the track is duplicated in the markup so the loop is seamless.
+ *
+ * Scoped via CSS Modules — does not affect any other section.
+ */
+
+.marquee {
+  position: relative;
+  border-top: 1px solid #272727;
+  border-bottom: 1px solid #272727;
+  overflow: hidden;
+  background: #070707;
+}
+
+.track {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  padding: 18px 0;
+  white-space: nowrap;
+  animation: marqueeScroll 40s linear infinite;
+  width: max-content;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pause on hover for accessibility & to let users read */
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+.item {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid #272727;
+  border-radius: 999px;
+  color: #f4f4f4;
+  background: rgba(255, 255, 255, 0.02);
+}
+.pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: #c7ff00;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

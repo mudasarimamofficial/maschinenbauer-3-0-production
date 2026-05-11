@@ -1,0 +1,105 @@
+/*
+ * M3.0 Core panel — extracted from the System Architektur section so it can
+ * be reused in the Hero. Visual output is byte-identical to the original
+ * inline implementation in machine-system-visual.tsx (which now imports this
+ * component). Styles moved here verbatim from the Claude static source
+ * (Maschinenbauer 3.0 BY CLAUDE/index.html lines 511–545).
+ */
+
+.machineCore {
+  --accent: #c7ff00;
+  --line: #272727;
+  --text: #f4f4f4;
+  --text-dim: #6a6a6a;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --display: 'Inter Tight', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --r-md: 14px;
+
+  position: relative;
+  border-radius: var(--r-md);
+  background:
+    radial-gradient(ellipse at center, rgba(199, 255, 0, 0.1), transparent 60%),
+    linear-gradient(135deg, #0e0e0e, #070707);
+  border: 1px solid rgba(199, 255, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 60px rgba(199, 255, 0, 0.04);
+}
+
+.machineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.led {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+}
+.led::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: m3pulse 1.4s infinite;
+}
+@keyframes m3pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.18); opacity: 0.6; }
+}
+
+.machineBody {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 280px;
+}
+
+.machineSvg {
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  display: block;
+}
+
+.machineSteps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--line);
+}
+
+.machineStep {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  transition: all 0.3s;
+}
+.machineStep.active {
+  color: #000;
+  background: var(--accent);
+  border-color: var(--accent);
+}

@@ -1,0 +1,363 @@
+/*
+ * Faithful port of the "System Architektur" section from the
+ * Maschinenbauer 3.0 BY CLAUDE static project (index.html lines 1273–1391
+ * and the corresponding CSS at lines 457–556).
+ *
+ * Scoped via CSS Modules so it cannot leak into the rest of the site.
+ * Local CSS variables redeclared at the wrapper to match Claude's :root tokens.
+ */
+
+.wrapper {
+  --accent: #c7ff00;
+  --line: #272727;
+  --text: #f4f4f4;
+  --text-muted: #a0a0a0;
+  --text-dim: #6a6a6a;
+  --warn: #ff5a3c;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --display: 'Inter Tight', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --r-md: 14px;
+  --r-lg: 22px;
+
+  position: relative;
+  padding: clamp(72px, 9vw, 128px) 0;
+  background: #050505;
+  color: var(--text);
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 4vw, 48px);
+  padding-right: clamp(20px, 4vw, 48px);
+  position: relative;
+}
+
+/* Section meta + head */
+.sectionMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+.sectionMeta b {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 780px;
+  margin-bottom: 60px;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  display: block;
+}
+.h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(32px, 4.8vw, 64px);
+  color: var(--text);
+  margin: 0;
+}
+.accentLine {
+  position: relative;
+  display: inline-block;
+}
+.accentLine::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: var(--accent);
+}
+.lead {
+  color: var(--text);
+  font-size: clamp(17px, 1.3vw, 21px);
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+/* Machine stage */
+.machineStage {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(24px, 3vw, 40px);
+  background: linear-gradient(180deg, #0a0a0a, #060606);
+  overflow: hidden;
+}
+.machineStage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(199, 255, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(199, 255, 0, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, #000, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, #000, transparent 75%);
+  pointer-events: none;
+}
+
+.machineRow {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  position: relative;
+}
+
+.ioCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ioCol h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0 0 6px 0;
+  font-weight: 500;
+}
+.ioCol.input h4 b {
+  color: var(--warn);
+}
+.ioCol.output h4 b {
+  color: var(--accent);
+}
+.ioItem {
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.4s;
+}
+.ioCol.input .ioItem {
+  background: rgba(255, 90, 60, 0.05);
+  border: 1px solid rgba(255, 90, 60, 0.18);
+  color: #f0d8d2;
+}
+.ioCol.input .ioItem::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warn);
+  flex-shrink: 0;
+  animation: mbflicker 2s infinite;
+}
+@keyframes mbflicker {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.ioCol.output .ioItem {
+  background: rgba(199, 255, 0, 0.05);
+  border: 1px solid rgba(199, 255, 0, 0.25);
+  color: #f0ffcf;
+}
+.ioCol.output .ioItem::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.machineCore {
+  position: relative;
+  border-radius: var(--r-md);
+  background:
+    radial-gradient(ellipse at center, rgba(199, 255, 0, 0.1), transparent 60%),
+    linear-gradient(135deg, #0e0e0e, #070707);
+  border: 1px solid rgba(199, 255, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 60px rgba(199, 255, 0, 0.04);
+}
+.machineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.led {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+}
+.led::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: mbpulse 1.4s infinite;
+}
+@keyframes mbpulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.18); opacity: 0.6; }
+}
+.machineBody {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 280px;
+}
+.machineSvg {
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  display: block;
+}
+.machineSteps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--line);
+}
+.machineStep {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  transition: all 0.3s;
+}
+.machineStep.active {
+  color: #000;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .machineRow {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* Overview grid (5 boxes below) */
+.overview {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+@media (max-width: 900px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .overview {
+    grid-template-columns: 1fr;
+  }
+}
+.overviewItem {
+  padding: 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+}
+.overviewNum {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+.overviewLabel {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Trailing statement (per brief: Keine Spielereien / Keine unnötige Komplexität / nachvollziehbare Struktur) */
+.statement {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 720px) {
+  .statement {
+    grid-template-columns: 1fr;
+  }
+}
+.statementLine {
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.statementLine span:first-child {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
+}
+.statementLine.accent {
+  border-color: rgba(199, 255, 0, 0.35);
+  background: rgba(199, 255, 0, 0.05);
+  color: var(--accent);
+}
