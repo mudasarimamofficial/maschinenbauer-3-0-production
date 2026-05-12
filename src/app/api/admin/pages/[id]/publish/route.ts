@@ -24,7 +24,12 @@ export async function POST(req: Request, { params }: Props) {
 
   await gate.supabase
     .from("maschinenbauer_site_page_versions")
-    .insert({ page_id: id, content: (current as any).published_content, created_by: gate.user.id })
+    .insert({
+      page_id: id,
+      draft_content: (current as any).draft_content,
+      published_content: (current as any).published_content,
+      created_by: gate.user.id,
+    })
     .then(() => undefined);
 
   const now = new Date().toISOString();

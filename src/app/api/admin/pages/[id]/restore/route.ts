@@ -32,19 +32,20 @@ export async function POST(req: Request, { params }: Props) {
 
   const { data: version, error: versionErr } = await gate.supabase
     .from("maschinenbauer_site_page_versions")
-    .select("content")
+    .select("draft_content, published_content")
     .eq("id", parsed.data.versionId)
     .eq("page_id", id)
     .maybeSingle();
   if (versionErr) return NextResponse.json({ ok: false, message: versionErr.message }, { status: 500 });
-  if (!version?.content) return NextResponse.json({ ok: false, message: "Version not found" }, { status: 404 });
+  const restoredContent = (version as any)?.published_content || (version as any)?.draft_content;
+  if (!restoredContent) return NextResponse.json({ ok: false, message: "Version not found" }, { status: 404 });
 
   const update: Record<string, unknown> = {
-    draft_content: (version as any).content,
+    draft_content: restoredContent,
     updated_at: new Date().toISOString(),
   };
   if (parsed.data.target === "published") {
-    update.published_content = (version as any).content;
+    update.published_content = restoredContent;
     update.status = "published";
     update.published_at = new Date().toISOString();
   }
