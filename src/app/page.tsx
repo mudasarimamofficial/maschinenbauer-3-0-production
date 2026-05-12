@@ -24,7 +24,7 @@ export default async function Home() {
 
   return (
     <MaschinenbauerConfigProvider config={config}>
-      <main className="min-h-screen overflow-x-clip bg-background text-foreground">
+      <main className="mb-public min-h-screen overflow-x-clip bg-background text-foreground">
         <Header />
         <HeroSection />
         <TrustStripSection />

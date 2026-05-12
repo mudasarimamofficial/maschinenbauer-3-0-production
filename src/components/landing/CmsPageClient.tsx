@@ -50,7 +50,7 @@ export function CmsPageClient({ globalContent, initialPage, isBuilderPreview }: 
   const useLanding = preset !== "classic";
 
   return (
-    <div className={`${useLanding ? "cf-landing" : ""} flex flex-1 flex-col`}>
+    <div className={`mb-public ${useLanding ? "cf-landing" : ""} flex flex-1 flex-col`}>
       {isBuilderPreview ? <style id="cf-live-theme-vars" dangerouslySetInnerHTML={{ __html: liveThemeCss }} /> : null}
       <Header content={resolved} />
       <main className="flex-1">

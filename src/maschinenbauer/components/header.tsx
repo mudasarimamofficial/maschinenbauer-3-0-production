@@ -43,7 +43,7 @@ export function Header() {
         <div className="hidden md:block">
           <a
             href={bookingUrl}
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:shadow-[0_0_24px_-4px] hover:shadow-primary/60 transition-shadow"
+            className="mb-cta group inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:shadow-[0_0_24px_-4px] hover:shadow-primary/60 transition-shadow"
           >
             {bookingLabel}
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -81,7 +81,7 @@ export function Header() {
               <a
                 href={bookingUrl}
                 onClick={() => setOpen(false)}
-                className="block mt-3 px-4 py-3 rounded-md bg-primary text-primary-foreground font-semibold text-center"
+                className="mb-cta block mt-3 px-4 py-3 rounded-md bg-primary text-primary-foreground font-semibold text-center"
               >
                 {bookingLabel}
               </a>

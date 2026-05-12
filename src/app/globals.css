@@ -26,47 +26,60 @@
   --ring: #c7ff00;
   --radius: 0.625rem;
 
-  --font-size-h1: 22px;
-  --font-size-h2: 20px;
-  --font-size-h3: 18px;
-  --font-size-h4: 16px;
-  --font-size-h5: 15px;
-  --font-size-h6: 14px;
-  --font-size-body: 16px;
-  --font-size-small: 14px;
+  --fs-h1: 22px;
+  --fs-h2: 20px;
+  --fs-h3: 18px;
+  --fs-h4: 16px;
+  --fs-h5: 15px;
+  --fs-h6: 14px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --font-size-h1: var(--fs-h1);
+  --font-size-h2: var(--fs-h2);
+  --font-size-h3: var(--fs-h3);
+  --font-size-h4: var(--fs-h4);
+  --font-size-h5: var(--fs-h5);
+  --font-size-h6: var(--fs-h6);
+  --font-size-body: var(--fs-body);
+  --font-size-small: var(--fs-small);
 }
 
 @media (min-width: 768px) {
   :root {
-    --font-size-h1: 28px;
-    --font-size-h2: 24px;
-    --font-size-h3: 22px;
-    --font-size-h4: 20px;
-    --font-size-h5: 18px;
-    --font-size-h6: 16px;
+    --fs-h1: 28px;
+    --fs-h2: 24px;
+    --fs-h3: 22px;
+    --fs-h4: 20px;
+    --fs-h5: 18px;
+    --fs-h6: 16px;
+    --fs-body: 16px;
+    --fs-small: 14px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --font-size-h1: 36px;
-    --font-size-h2: 30px;
-    --font-size-h3: 26px;
-    --font-size-h4: 22px;
-    --font-size-h5: 20px;
-    --font-size-h6: 18px;
+    --fs-h1: 36px;
+    --fs-h2: 30px;
+    --fs-h3: 26px;
+    --fs-h4: 22px;
+    --fs-h5: 20px;
+    --fs-h6: 18px;
+    --fs-body: 16px;
+    --fs-small: 14px;
   }
 }
 
 @media (min-width: 1440px) {
   :root {
-    --font-size-h1: 42px;
-    --font-size-h2: 36px;
-    --font-size-h3: 30px;
-    --font-size-h4: 26px;
-    --font-size-h5: 22px;
-    --font-size-h6: 18px;
-    --font-size-body: 18px;
+    --fs-h1: 42px;
+    --fs-h2: 36px;
+    --fs-h3: 30px;
+    --fs-h4: 26px;
+    --fs-h5: 22px;
+    --fs-h6: 18px;
+    --fs-body: 18px;
+    --fs-small: 14px;
   }
 }
 
@@ -239,6 +252,71 @@ small {
   font-size: var(--font-size-small);
   line-height: 1.5;
   font-weight: 400;
+}
+
+.mb-public {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.mb-public :where(h1, .h1, [data-heading="h1"]) {
+  font-size: var(--fs-h1) !important;
+  line-height: 1.05 !important;
+  font-weight: 700 !important;
+}
+
+.mb-public :where(h2, .h2, [data-heading="h2"]) {
+  font-size: var(--fs-h2) !important;
+  line-height: 1.12 !important;
+  font-weight: 700 !important;
+}
+
+.mb-public :where(h3, .h3, [data-heading="h3"]) {
+  font-size: var(--fs-h3) !important;
+  line-height: 1.16 !important;
+  font-weight: 700 !important;
+}
+
+.mb-public :where(h4, .h4, [data-heading="h4"]) {
+  font-size: var(--fs-h4) !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+.mb-public :where(h5, .h5, [data-heading="h5"]) {
+  font-size: var(--fs-h5) !important;
+  line-height: 1.25 !important;
+  font-weight: 700 !important;
+}
+
+.mb-public :where(h6, .h6, [data-heading="h6"]) {
+  font-size: var(--fs-h6) !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+.mb-public :where(p, li, input, textarea, select, button, [data-text="body"]) {
+  font-size: var(--fs-body) !important;
+  line-height: 1.65;
+}
+
+.mb-public :where(
+  small,
+  .text-small,
+  .microcopy,
+  .eyebrow,
+  .kicker,
+  .meta,
+  p.uppercase,
+  [data-text="small"]
+) {
+  font-size: var(--fs-small) !important;
+  line-height: 1.5;
+}
+
+.mb-public :where(.mb-cta) {
+  font-size: var(--fs-body) !important;
+  line-height: 1.2;
 }
 
 .cf-visually-hidden {

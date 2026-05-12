@@ -15,7 +15,7 @@ const steps = [
 
 export default function DankePage() {
   return (
-    <main className="bg-background min-h-screen flex flex-col">
+    <main className="mb-public bg-background min-h-screen flex flex-col">
       <Header />
 
       <div className="flex-1 flex items-center justify-center pt-32 pb-20">

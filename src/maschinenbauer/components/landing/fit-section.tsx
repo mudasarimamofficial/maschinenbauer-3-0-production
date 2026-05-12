@@ -96,12 +96,12 @@ export function FitSection() {
 
             <a
               href={bookingUrl}
-              className="group inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-md bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_32px_-4px] hover:shadow-primary/60 transition-shadow"
+              className="mb-cta group inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-md bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_32px_-4px] hover:shadow-primary/60 transition-shadow"
             >
               {bookingLabel}
               <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-            <p className="mt-3 text-xs text-muted-foreground text-center font-mono">
+            <p className="microcopy mt-3 text-xs text-muted-foreground text-center font-mono">
               {bookingMicrocopy}
             </p>
           </motion.div>

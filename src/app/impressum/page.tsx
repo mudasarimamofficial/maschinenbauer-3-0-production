@@ -10,7 +10,7 @@ export default async function ImpressumPage() {
 
   return (
     <MaschinenbauerConfigProvider config={config}>
-    <main className="bg-background min-h-screen flex flex-col">
+    <main className="mb-public bg-background min-h-screen flex flex-col">
       <Header />
 
       <div className="flex-1 pt-32 pb-20">

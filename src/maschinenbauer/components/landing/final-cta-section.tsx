@@ -49,14 +49,14 @@ export function FinalCTASection() {
           <div className="mt-10 flex justify-center">
             <a
               href={bookingUrl}
-              className="group inline-flex items-center gap-2 px-9 py-5 rounded-md bg-primary text-primary-foreground font-semibold text-lg hover:shadow-[0_0_48px_-4px] hover:shadow-primary/70 transition-shadow"
+              className="mb-cta group inline-flex items-center gap-2 px-9 py-5 rounded-md bg-primary text-primary-foreground font-semibold text-lg hover:shadow-[0_0_48px_-4px] hover:shadow-primary/70 transition-shadow"
             >
               {bookingLabel}
               <ArrowUpRight size={20} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
-          <p className="mt-5 text-sm text-muted-foreground font-mono tracking-wide">
+          <p className="microcopy mt-5 text-sm text-muted-foreground font-mono tracking-wide">
             {bookingMicrocopy}
           </p>
         </motion.div>

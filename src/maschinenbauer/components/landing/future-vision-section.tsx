@@ -129,12 +129,12 @@ export function FutureVisionSection() {
           <div className="flex flex-col gap-1">
             <a
               href={bookingUrl}
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_32px_-4px] hover:shadow-primary/60 transition-shadow"
+              className="mb-cta group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_32px_-4px] hover:shadow-primary/60 transition-shadow"
             >
               {bookingLabel}
               <ArrowUpRight size={18} />
             </a>
-            <p className="text-xs text-muted-foreground font-mono text-center">{bookingMicrocopy}</p>
+            <p className="microcopy text-xs text-muted-foreground font-mono text-center">{bookingMicrocopy}</p>
           </div>
         </motion.div>
       </div>

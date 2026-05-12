@@ -85,12 +85,12 @@ export function HeroSection() {
             <div className={styles.ctaRow}>
               <a
                 href={bookingUrl}
-                className={styles.cta}
+                className={`${styles.cta} mb-cta`}
               >
                 {bookingLabel}
                 <ArrowUpRight size={18} aria-hidden />
               </a>
-              <p className={styles.micro}>{bookingMicrocopy}</p>
+              <p className={`${styles.micro} microcopy`}>{bookingMicrocopy}</p>
             </div>
           </motion.div>
 
